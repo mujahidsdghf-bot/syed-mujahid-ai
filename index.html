@@ -1,0 +1,676 @@
+```html
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syed Mujahid | Full-Stack AI Developer & Voice Agent Specialist</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#05070e',
+                            card: '#0d121f',
+                            border: '#1a2336',
+                            cyan: '#00f2fe',
+                            purple: '#a855f7',
+                            neonGreen: '#10b981',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #05070e;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        .code-font {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .glow-border {
+            position: relative;
+        }
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(90deg, #00f2fe, #a855f7, #10b981);
+            border-radius: 1.25rem;
+            z-index: -1;
+            opacity: 0.4;
+            transition: opacity 0.3s ease;
+        }
+        .glow-border:hover::before {
+            opacity: 1;
+        }
+        .glass-panel {
+            background: rgba(13, 18, 31, 0.75);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .bg-grid {
+            background-size: 50px 50px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-grid antialiased selection:bg-brand-cyan selection:text-black pb-24">
+
+    <!-- Floating Action Quick Bar (Bottom Right) -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+        <!-- WhatsApp Floating Button -->
+        <a href="https://wa.me/919177411712?text=Hi%20Syed%20Mujahid,%20I%20am%20interested%20in%20your%20AI%20and%20Web%20Development%20services." target="_blank" title="WhatsApp Syed Mujahid" class="w-14 h-14 rounded-full bg-emerald-500 text-black flex items-center justify-center text-2xl shadow-xl shadow-emerald-500/30 hover:scale-110 transition-transform">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <!-- Call Floating Button -->
+        <a href="tel:+919177411712" title="Call Syed Mujahid" class="w-14 h-14 rounded-full bg-brand-cyan text-black flex items-center justify-center text-xl shadow-xl shadow-brand-cyan/30 hover:scale-110 transition-transform">
+            <i class="fas fa-phone-alt"></i>
+        </a>
+        <!-- Email Floating Button -->
+        <a href="mailto:syedmujahid.ai@gmail.com" title="Email Syed Mujahid" class="w-14 h-14 rounded-full bg-brand-purple text-white flex items-center justify-center text-xl shadow-xl shadow-brand-purple/30 hover:scale-110 transition-transform">
+            <i class="fas fa-envelope"></i>
+        </a>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-40 glass-panel border-b border-brand-border/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-cyan via-purple-500 to-emerald-400 flex items-center justify-center font-extrabold text-black text-lg shadow-lg shadow-brand-cyan/20 group-hover:scale-105 transition-transform">
+                    SM
+                </div>
+                <div>
+                    <span class="text-lg font-bold tracking-tight text-white block">Syed Mujahid</span>
+                    <span class="text-xs text-brand-cyan code-font tracking-wider">FULL-STACK AI DEVELOPER</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="#services" class="hover:text-brand-cyan transition-colors">Services</a>
+                <a href="#voice-agent" class="hover:text-brand-cyan transition-colors">AI Voice Agent</a>
+                <a href="#demo" class="hover:text-brand-cyan transition-colors">Chatbot Demo</a>
+                <a href="#estimator" class="hover:text-brand-cyan transition-colors">Estimator</a>
+                <a href="#contact" class="hover:text-brand-cyan transition-colors">Contact</a>
+            </nav>
+
+            <!-- CTA Actions -->
+            <div class="flex items-center gap-3">
+                <a href="mailto:syedmujahid.ai@gmail.com" class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-300 hover:bg-purple-500/20 text-xs font-semibold transition-all">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email Me</span>
+                </a>
+                <a href="https://wa.me/919177411712?text=Hi%20Syed%20Mujahid,%20I%20want%20to%20discuss%20an%20AI%20project." target="_blank" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-400 to-brand-cyan text-black font-extrabold text-sm shadow-lg shadow-emerald-400/20 transition-all hover:scale-105 flex items-center gap-2">
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    <span>Connect Now</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24">
+        <!-- Hero Section -->
+        <section class="relative min-h-[85vh] flex items-center justify-center px-4 py-16 overflow-hidden">
+            <!-- Glowing Background Orbs -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-tr from-brand-cyan/20 via-brand-purple/20 to-emerald-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+            <div class="max-w-6xl mx-auto text-center relative z-10">
+                <!-- Status Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-semibold mb-6">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                    Available for AI Voice Agents & Web Projects
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+                    Engineering Autonomous <br class="hidden sm:inline">
+                    <span class="bg-gradient-to-r from-brand-cyan via-purple-400 to-emerald-400 bg-clip-text text-transparent">
+                        AI Voice Agents & Web Apps
+                    </span>
+                </h1>
+
+                <!-- Sub-description -->
+                <p class="max-w-3xl mx-auto text-base sm:text-xl text-gray-300 mb-10 leading-relaxed font-normal">
+                    Hi, I'm <strong class="text-white">Syed Mujahid</strong>. I build human-like AI Voice Agents (ElevenLabs), automated WhatsApp & Web Chatbots (RAG), and scalable Full-Stack Web Applications for businesses globally.
+                </p>
+
+                <!-- Direct Action Buttons -->
+                <div class="flex flex-wrap items-center justify-center gap-4 mb-14">
+                    <a href="https://wa.me/919177411712?text=Hi%20Syed%20Mujahid,%20I%20want%20to%20discuss%20building%20an%20AI%20Solution." target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-base flex items-center justify-center gap-3 shadow-xl shadow-emerald-500/25 transition-all hover:scale-105">
+                        <i class="fab fa-whatsapp text-2xl"></i>
+                        <span>WhatsApp: +91 9177411712</span>
+                    </a>
+                    <a href="mailto:syedmujahid.ai@gmail.com" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-panel border border-brand-purple/50 text-purple-300 hover:bg-brand-purple/20 font-bold text-base flex items-center justify-center gap-3 transition-all hover:scale-105">
+                        <i class="fas fa-envelope text-xl text-brand-purple"></i>
+                        <span>syedmujahid.ai@gmail.com</span>
+                    </a>
+                    <a href="tel:+919177411712" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-panel border border-brand-cyan/50 text-brand-cyan hover:bg-brand-cyan/10 font-bold text-base flex items-center justify-center gap-3 transition-all hover:scale-105">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>Call +91 9177411712</span>
+                    </a>
+                </div>
+
+                <!-- Stats Bar -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                    <div class="glass-panel p-5 rounded-2xl text-center border border-brand-border">
+                        <div class="text-3xl font-extrabold text-brand-cyan mb-1">ElevenLabs</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Conversational Voice</div>
+                    </div>
+                    <div class="glass-panel p-5 rounded-2xl text-center border border-brand-border">
+                        <div class="text-3xl font-extrabold text-brand-purple mb-1">RAG AI</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Smart Chatbots</div>
+                    </div>
+                    <div class="glass-panel p-5 rounded-2xl text-center border border-brand-border">
+                        <div class="text-3xl font-extrabold text-emerald-400 mb-1">Python/Node</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Full-Stack Architecture</div>
+                    </div>
+                    <div class="glass-panel p-5 rounded-2xl text-center border border-brand-border">
+                        <div class="text-3xl font-extrabold text-white mb-1">24/7</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Workflow Automation</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIVE AI VOICE AGENT SIMULATOR SECTION -->
+        <section id="voice-agent" class="py-20 px-4 max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-brand-cyan font-semibold code-font text-xs uppercase tracking-widest">Interactive Speech Demo</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-2">Test AI Voice Agent Engine</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto mt-3 text-sm sm:text-base">Experience real-time interactive speech synthesis and speech recognition powered directly in your browser.</p>
+            </div>
+
+            <div class="glow-border glass-panel p-8 sm:p-12 rounded-3xl border border-brand-cyan/30 relative">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <!-- Control Panel -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-cyan/10 border border-brand-cyan/40 text-brand-cyan flex items-center justify-center text-2xl">
+                                <i class="fas fa-microphone-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Voice Agent Assistant</h3>
+                                <span class="text-xs text-emerald-400 font-medium flex items-center gap-1">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Audio Synthesis Ready
+                                </span>
+                            </div>
+                        </div>
+
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Click the microphone or choose a sample command to talk with Mujahid's AI Voice Assistant. It responds using natural speech synthesis.
+                        </p>
+
+                        <!-- Preset Prompts -->
+                        <div class="space-y-2">
+                            <span class="text-xs text-gray-400 uppercase tracking-wider font-bold block">Quick Voice Test Commands:</span>
+                            <div class="flex flex-col gap-2">
+                                <button onclick="speakPreset('Hello Syed! Tell me about your AI Voice Agent services for clinics.')" class="w-full text-left p-3 rounded-xl glass-panel hover:bg-brand-cyan/10 text-xs text-gray-200 border border-brand-border flex items-center justify-between group">
+                                    <span>🗣️ "Tell me about AI Voice Agent services."</span>
+                                    <i class="fas fa-play text-brand-cyan opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                </button>
+                                <button onclick="speakPreset('How do you build custom chatbots and WhatsApp automation?')" class="w-full text-left p-3 rounded-xl glass-panel hover:bg-brand-purple/10 text-xs text-gray-200 border border-brand-border flex items-center justify-between group">
+                                    <span>🗣️ "How do you build custom chatbots?"</span>
+                                    <i class="fas fa-play text-brand-purple opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                </button>
+                                <button onclick="speakPreset('What is your phone number and email address?')" class="w-full text-left p-3 rounded-xl glass-panel hover:bg-emerald-500/10 text-xs text-gray-200 border border-brand-border flex items-center justify-between group">
+                                    <span>🗣️ "What is your contact details?"</span>
+                                    <i class="fas fa-play text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visualizer & Microphone Center -->
+                    <div class="lg:col-span-7 flex flex-col items-center justify-center p-6 bg-brand-card/80 rounded-2xl border border-brand-border text-center">
+                        <!-- Soundwave Canvas Visualizer -->
+                        <canvas id="soundwaveCanvas" width="400" height="100" class="w-full h-24 mb-6 rounded-xl bg-brand-dark/90 border border-brand-border"></canvas>
+
+                        <!-- Mic Button -->
+                        <button id="micBtn" onclick="toggleMic()" class="w-20 h-20 rounded-full bg-gradient-to-r from-brand-cyan to-brand-purple text-black text-3xl flex items-center justify-center shadow-2xl shadow-brand-cyan/30 hover:scale-105 transition-all mb-4">
+                            <i id="micIcon" class="fas fa-microphone"></i>
+                        </button>
+                        <span id="voiceStatus" class="text-xs text-gray-400 font-semibold uppercase tracking-wider">Click Mic to Speak or Select Command</span>
+
+                        <!-- Realtime Transcript Box -->
+                        <div id="voiceTranscript" class="mt-6 w-full p-4 rounded-xl glass-panel text-sm text-gray-300 min-h-[60px] text-left border border-brand-border code-font">
+                            <span class="text-gray-500 italic">Agent status: Idle. Press mic or button above to initiate conversation...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section Grid -->
+        <section id="services" class="py-20 px-4 max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-brand-purple font-semibold code-font text-xs uppercase tracking-widest">Solutions Portfolio</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-2">Core Services Offered</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Service 1 -->
+                <div class="glass-panel p-8 rounded-3xl border border-brand-border hover:border-brand-cyan/50 transition-all">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-cyan/10 border border-brand-cyan/40 text-brand-cyan flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">AI Voice Agents (ElevenLabs)</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Intelligent, conversational voice receptionists and appointment booking agents for hospitals, clinics, and businesses. Built with ElevenLabs, Twilio, and OpenAI Realtime.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-semibold">
+                        <span class="px-3 py-1 rounded-full bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/30">ElevenLabs</span>
+                        <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/30">Twilio Integration</span>
+                        <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Voice Receptionists</span>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-panel p-8 rounded-3xl border border-brand-border hover:border-brand-purple/50 transition-all">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-purple/10 border border-brand-purple/40 text-brand-purple flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">AI Chatbots & RAG Systems</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Automated website and WhatsApp chatbots backed by Retrieval-Augmented Generation (RAG). Trained on your specific company documents, PDFs, and FAQs.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-semibold">
+                        <span class="px-3 py-1 rounded-full bg-brand-purple/10 text-brand-purple border border-brand-purple/30">WhatsApp Bot</span>
+                        <span class="px-3 py-1 rounded-full bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/30">RAG Architecture</span>
+                        <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Lead Capture</span>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-panel p-8 rounded-3xl border border-brand-border hover:border-emerald-500/50 transition-all">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Full-Stack Web Development</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Modern, responsive web applications built with Python (Flask/Express), Node.js, and modern CSS/JS frameworks. Deployed seamlessly via Render and GitHub.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-semibold">
+                        <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Python & Flask</span>
+                        <span class="px-3 py-1 rounded-full bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/30">Node.js & Express</span>
+                        <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/30">Render / GitHub Deployment</span>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="glass-panel p-8 rounded-3xl border border-brand-border hover:border-blue-500/50 transition-all">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/40 text-blue-400 flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Workflow Automation</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        End-to-end business process automation connecting your CRM, email campaigns, databases, and customer support with custom AI triggers.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-semibold">
+                        <span class="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30">API Integrations</span>
+                        <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Webhook Automation</span>
+                        <span class="px-3 py-1 rounded-full bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/30">CRM Sync</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live RAG Chatbot Sandbox -->
+        <section id="demo" class="py-20 px-4 bg-brand-card/30 border-y border-brand-border">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5">
+                    <span class="text-brand-cyan font-semibold code-font text-xs uppercase tracking-widest">Interactive Chatbot</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-4">Test RAG Chatbot Sandbox</h2>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Chat live with Mujahid's interactive bot to inquire about pricing, scheduling, and project timelines.
+                    </p>
+
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-center gap-3 text-gray-300">
+                            <i class="fas fa-check-circle text-emerald-400"></i> Instant automated lead qualification
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-300">
+                            <i class="fas fa-check-circle text-emerald-400"></i> Trained on custom project knowledge
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <div class="glass-panel rounded-3xl overflow-hidden border border-brand-cyan/30">
+                        <div class="bg-brand-card px-6 py-4 border-b border-brand-border flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-brand-cyan text-black font-extrabold flex items-center justify-center text-xs">
+                                    AI
+                                </div>
+                                <span class="text-white font-bold text-sm">Syed AI Chatbot</span>
+                            </div>
+                            <span class="text-xs text-emerald-400 font-semibold">● Online</span>
+                        </div>
+
+                        <div id="chatBox" class="h-80 overflow-y-auto p-6 space-y-4 bg-brand-dark/95 text-sm">
+                            <div class="flex gap-3">
+                                <div class="w-8 h-8 rounded-full bg-brand-cyan/20 text-brand-cyan flex items-center justify-center text-xs shrink-0">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="bg-brand-card text-gray-200 p-4 rounded-2xl rounded-tl-none border border-brand-border max-w-[85%]">
+                                    Hello! I am Syed Mujahid's AI Agent. How can I assist you with Voice Agents, Chatbots, or Web Apps today?
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-brand-card border-t border-brand-border">
+                            <form onsubmit="handleChatSubmit(event)" class="flex gap-2">
+                                <input type="text" id="chatInput" placeholder="Type your message..." required class="flex-1 bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-cyan">
+                                <button type="submit" class="px-5 py-3 rounded-xl bg-brand-cyan text-black font-bold text-sm hover:bg-cyan-400 transition-colors">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Project Cost & Timeline Estimator -->
+        <section id="estimator" class="py-20 px-4 max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-emerald-400 font-semibold code-font text-xs uppercase tracking-widest">Instant Calculator</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-2">Project Cost & Scope Calculator</h2>
+            </div>
+
+            <div class="glass-panel p-6 sm:p-10 rounded-3xl border border-brand-border">
+                <div class="space-y-8">
+                    <div>
+                        <label class="text-white font-bold text-sm block mb-4">1. Select Primary Service Solution:</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <button type="button" onclick="setEstBase('voice', 350)" id="est-voice" class="est-btn p-4 rounded-xl border border-brand-cyan bg-brand-cyan/10 text-left">
+                                <i class="fas fa-microphone text-brand-cyan text-xl mb-2"></i>
+                                <div class="font-bold text-white text-sm">AI Voice Agent</div>
+                                <div class="text-xs text-gray-400 mt-1">ElevenLabs & Phone Booking</div>
+                            </button>
+                            <button type="button" onclick="setEstBase('bot', 250)" id="est-bot" class="est-btn p-4 rounded-xl border border-brand-border bg-brand-card text-left">
+                                <i class="fas fa-comments text-brand-purple text-xl mb-2"></i>
+                                <div class="font-bold text-white text-sm">AI Chatbot / RAG</div>
+                                <div class="text-xs text-gray-400 mt-1">Website or WhatsApp Bot</div>
+                            </button>
+                            <button type="button" onclick="setEstBase('web', 400)" id="est-web" class="est-btn p-4 rounded-xl border border-brand-border bg-brand-card text-left">
+                                <i class="fas fa-code text-emerald-400 text-xl mb-2"></i>
+                                <div class="font-bold text-white text-sm">Full-Stack Web App</div>
+                                <div class="text-xs text-gray-400 mt-1">Python/Node.js & Database</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="text-white font-bold text-sm block mb-4">2. Select Add-on Requirements:</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl glass-panel cursor-pointer">
+                                <input type="checkbox" onchange="calcTotal()" id="chk-crm" class="w-4 h-4 accent-brand-cyan">
+                                <span class="text-gray-300">CRM & Lead Auto-Sync (+$100)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl glass-panel cursor-pointer">
+                                <input type="checkbox" onchange="calcTotal()" id="chk-rag" class="w-4 h-4 accent-brand-cyan">
+                                <span class="text-gray-300">Custom PDF / Document Training (+$120)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl glass-panel cursor-pointer">
+                                <input type="checkbox" onchange="calcTotal()" id="chk-wa" class="w-4 h-4 accent-brand-cyan">
+                                <span class="text-gray-300">WhatsApp Official API Setup (+$150)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl glass-panel cursor-pointer">
+                                <input type="checkbox" onchange="calcTotal()" id="chk-fast" class="w-4 h-4 accent-brand-cyan">
+                                <span class="text-gray-300">Express 48-Hour Delivery (+$150)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-gradient-to-r from-brand-card to-brand-dark border border-brand-cyan/40 flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div>
+                            <span class="text-xs text-gray-400 uppercase tracking-wider block">Estimated Project Investment</span>
+                            <div id="estPriceDisplay" class="text-4xl font-extrabold text-brand-cyan mt-1">$350 USD</div>
+                            <span class="text-xs text-emerald-400 mt-1 block">Estimated Timeline: 3 - 5 Days</span>
+                        </div>
+                        <a id="estWaLink" href="#" target="_blank" class="w-full md:w-auto px-6 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-sm flex items-center justify-center gap-2 transition-all">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            <span>Confirm Estimate via WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Direct Contact Section -->
+        <section id="contact" class="py-20 px-4 max-w-4xl mx-auto">
+            <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-brand-cyan/30 text-center">
+                <span class="text-brand-cyan font-semibold code-font text-xs uppercase tracking-widest">Get In Touch</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4">Contact Syed Mujahid</h2>
+                <p class="text-gray-300 text-sm sm:text-base mb-10 max-w-xl mx-auto">
+                    Ready to build your AI agent or Web Application? Reach out directly using any channel below:
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+                    <a href="https://wa.me/919177411712?text=Hi%20Syed%20Mujahid,%20I%20want%20to%20discuss%20an%20AI%20project." target="_blank" class="p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 transition-all">
+                        <i class="fab fa-whatsapp text-3xl mb-2"></i>
+                        <div class="font-bold text-sm text-white">WhatsApp</div>
+                        <div class="text-xs text-gray-400 mt-1">+91 9177411712</div>
+                    </a>
+
+                    <a href="tel:+919177411712" class="p-5 rounded-2xl bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan hover:bg-brand-cyan/20 transition-all">
+                        <i class="fas fa-phone-alt text-3xl mb-2"></i>
+                        <div class="font-bold text-sm text-white">Direct Phone Call</div>
+                        <div class="text-xs text-gray-400 mt-1">+91 9177411712</div>
+                    </a>
+
+                    <a href="mailto:syedmujahid.ai@gmail.com" class="p-5 rounded-2xl bg-purple-500/10 border border-purple-500/30 text-purple-300 hover:bg-purple-500/20 transition-all">
+                        <i class="fas fa-envelope text-3xl mb-2"></i>
+                        <div class="font-bold text-sm text-white">Email</div>
+                        <div class="text-xs text-gray-400 mt-1">syedmujahid.ai@gmail.com</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-8 px-4 text-center text-xs text-gray-500 border-t border-brand-border">
+        &copy; 2026 Syed Mujahid. All Rights Reserved. AI Developer & Voice Agent Specialist.
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- Soundwave Canvas Visualizer ---
+        const canvas = document.getElementById('soundwaveCanvas');
+        const ctx = canvas.getContext('2d');
+        let isAudioPlaying = false;
+        let animationId;
+
+        function drawWave() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = '#00f2fe';
+            ctx.beginPath();
+
+            const sliceWidth = canvas.width / 50;
+            let x = 0;
+
+            for (let i = 0; i < 50; i++) {
+                const v = isAudioPlaying ? Math.sin(i * 0.3 + Date.now() * 0.01) * 25 + 50 : 50;
+                if (i === 0) ctx.moveTo(x, v);
+                else ctx.lineTo(x, v);
+                x += sliceWidth;
+            }
+            ctx.stroke();
+            animationId = requestAnimationFrame(drawWave);
+        }
+        drawWave();
+
+        // --- Speech Synthesis & Voice Agent Engine ---
+        function speakPreset(text) {
+            document.getElementById('voiceTranscript').innerHTML = `<strong>User:</strong> "${text}"`;
+            document.getElementById('voiceStatus').innerText = "AI Synthesizing Speech...";
+            
+            let responseText = "Hello! I am Syed Mujahid's AI Voice Assistant. I specialize in building custom conversational voice agents using ElevenLabs, automated chatbots, and full-stack web platforms.";
+            if(text.includes('chatbots')) {
+                responseText = "Syed builds RAG-based AI chatbots trained on your business documents and integrates them with WhatsApp and custom websites.";
+            } else if(text.includes('contact')) {
+                responseText = "You can contact Syed Mujahid directly on WhatsApp or Phone at +91 9177411712 or by email at syedmujahid.ai@gmail.com.";
+            }
+
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(responseText);
+                utterance.rate = 1.0;
+                utterance.pitch = 1.0;
+
+                utterance.onstart = function() {
+                    isAudioPlaying = true;
+                    document.getElementById('micBtn').classList.add('animate-pulse');
+                    document.getElementById('voiceTranscript').innerHTML += `<br><br><strong class="text-brand-cyan">AI Voice Agent:</strong> "${responseText}"`;
+                };
+
+                utterance.onend = function() {
+                    isAudioPlaying = false;
+                    document.getElementById('micBtn').classList.remove('animate-pulse');
+                    document.getElementById('voiceStatus').innerText = "Click Mic to Speak or Select Command";
+                };
+
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert(responseText);
+            }
+        }
+
+        let isListening = false;
+        let recognition;
+
+        function toggleMic() {
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                alert("Speech recognition is not supported in this browser. Please try clicking the preset voice commands above!");
+                return;
+            }
+
+            if (!isListening) {
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                recognition = new SpeechRecognition();
+                recognition.continuous = false;
+                recognition.interimResults = false;
+
+                recognition.onstart = function() {
+                    isListening = true;
+                    document.getElementById('micIcon').className = "fas fa-stop text-red-500";
+                    document.getElementById('voiceStatus').innerText = "Listening... Speak now!";
+                };
+
+                recognition.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript;
+                    speakPreset(transcript);
+                };
+
+                recognition.onerror = function() {
+                    isListening = false;
+                    document.getElementById('micIcon').className = "fas fa-microphone";
+                    document.getElementById('voiceStatus').innerText = "Click Mic to Speak";
+                };
+
+                recognition.onend = function() {
+                    isListening = false;
+                    document.getElementById('micIcon').className = "fas fa-microphone";
+                };
+
+                recognition.start();
+            } else {
+                if(recognition) recognition.stop();
+            }
+        }
+
+        // --- Estimator Logic ---
+        let currentBase = 350;
+
+        function setEstBase(type, price) {
+            currentBase = price;
+            document.querySelectorAll('.est-btn').forEach(b => {
+                b.classList.remove('border-brand-cyan', 'bg-brand-cyan/10');
+                b.classList.add('border-brand-border', 'bg-brand-card');
+            });
+            const active = document.getElementById(`est-${type}`);
+            if(active) {
+                active.classList.add('border-brand-cyan', 'bg-brand-cyan/10');
+                active.classList.remove('border-brand-border', 'bg-brand-card');
+            }
+            calcTotal();
+        }
+
+        function calcTotal() {
+            let total = currentBase;
+            if(document.getElementById('chk-crm').checked) total += 100;
+            if(document.getElementById('chk-rag').checked) total += 120;
+            if(document.getElementById('chk-wa').checked) total += 150;
+            if(document.getElementById('chk-fast').checked) total += 150;
+
+            document.getElementById('estPriceDisplay').innerText = `$${total} USD`;
+            const waText = encodeURIComponent(`Hi Syed Mujahid, I estimated my project budget at $${total} USD on your portfolio site. I want to build this.`);
+            document.getElementById('estWaLink').href = `https://wa.me/919177411712?text=${waText}`;
+        }
+        calcTotal();
+
+        // --- Sandbox Chat Logic ---
+        function handleChatSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('chatInput');
+            const msg = input.value.trim();
+            if(!msg) return;
+
+            const box = document.getElementById('chatBox');
+            box.innerHTML += `
+                <div class="flex gap-3 justify-end">
+                    <div class="bg-brand-cyan/20 text-brand-cyan p-4 rounded-2xl rounded-tr-none border border-brand-cyan/40 max-w-[85%]">
+                        ${msg}
+                    </div>
+                </div>
+            `;
+            input.value = '';
+            box.scrollTop = box.scrollHeight;
+
+            setTimeout(() => {
+                box.innerHTML += `
+                    <div class="flex gap-3">
+                        <div class="w-8 h-8 rounded-full bg-brand-cyan/20 text-brand-cyan flex items-center justify-center text-xs shrink-0">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="bg-brand-card text-gray-200 p-4 rounded-2xl rounded-tl-none border border-brand-border max-w-[85%]">
+                            Thanks for your message! Syed Mujahid can construct custom AI models and web platforms tailored to your business. Contact him directly at <strong>+91 9177411712</strong> or <strong>syedmujahid.ai@gmail.com</strong>.
+                        </div>
+                    </div>
+                `;
+                box.scrollTop = box.scrollHeight;
+            }, 600);
+        }
+    </script>
+</body>
+</html>
